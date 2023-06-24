@@ -10,7 +10,7 @@ export default function Navbar() {
     };
     return (
         <>
-            <div className='h-full w-full fixed'>
+            <div className='h-full fixed animate-slide-down z-10'>
                 {menu ? (
                     <div onClick={desplegarMenu} className="w-40 h-24 flex justify-between px-10 pt-8 items-center">
                         <Menu />
