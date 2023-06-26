@@ -1,7 +1,6 @@
-import { Link as Anchor } from "react-router-dom"
+import { Link as Anchor, NavLink } from "react-router-dom"
 import { useState } from "react"
 import { Menu, Cerrar } from "../assets/Icons"
-
 export default function Navbar() {
     const [menu, showmenu] = useState(true);
 
@@ -23,16 +22,14 @@ export default function Navbar() {
                                 <Anchor to={'/'} className="font-[500] text-white text-[20px] font-poppins hover:text-black py-4 pr-52">Inicio</Anchor>
                             </li>
                             <li className="hover:bg-white  rounded-l-2xl py-3 px-4">
-                                <Anchor to={'/Jugueteria'} className="font-[500] text-white text-[20px] font-poppins hover:text-black py-4 pr-40" >Jugueteria</Anchor>
+                                <NavLink to={'/jugueteria'} className="font-[500] text-white text-[20px] font-poppins hover:text-black py-4 pr-40" >Nuestros Productos</NavLink>
                             </li>
                             <li className="hover:bg-white  rounded-l-2xl py-3 px-4">
-                                <Anchor to={'/Farmacia'} className="font-[500] text-white text-[20px] font-poppins hover:text-black py-4 pr-44" >Farmacia</Anchor>
-                            </li>
-                            <li className="hover:bg-white  rounded-l-2xl py-3 px-4">
-                                <Anchor to={'/Sobrenosotros'} className="font-[500] text-white text-[20px] font-poppins hover:text-black py-10 pr-44" >Sobre Nosotros</Anchor>
+                                <Anchor to={'/sobrenosotros'} className="font-[500] text-white text-[20px] font-poppins hover:text-black py-10 pr-44" >Sobre Nosotros</Anchor>
                             </li>
                         </ul>
                     </div>
+
                 )}
             </div>
         </>
