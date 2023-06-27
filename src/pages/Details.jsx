@@ -1,4 +1,4 @@
-import Cards from "../components/Card"
+import Cards from "../components/Productos/Card"
 import utils from "../api/utils"
 import { useParams } from "react-router"
 import { useEffect, useState } from "react"
