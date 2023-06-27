@@ -1,7 +1,10 @@
 import Categorias from "../components/Categorias"
-import Cards from "../components/Card"
+import Cards from "../components/Productos/Card"
 import { useEffect, useState } from "react"
 import utils from '../api/utils'
+import { Input as Entrada, Checkbox } from "@material-tailwind/react";
+import Selects from "../components/Productos/Select";
+
 
 export default function Jugueteria() {
     const [farmacia, setProduct] = useState([])
@@ -49,23 +52,20 @@ export default function Jugueteria() {
         }, [filtros]
     )
 
-
-
     return (
         <div className="w-full h-full">
             <Categorias />
             <div className="w-full flex justify-around items-center pt-8">
-                <input type="text" className="border rounded-md" placeholder="Buscar.." name="buscador" onChange={(e) => setFiltros({ ...filtros, buscador: e.target.value })} />
-                <label htmlFor="farmacia">Farmacia <input onChange={(e) => setFiltros({ ...filtros, farmacia: e.target.checked })} type="checkbox" name="farmacia" id="farmacia" />
+                <div className="w-72">
+                    <Entrada type="text" label="Buscar" name="buscador" onChange={(e) => setFiltros({ ...filtros, buscador: e.target.value })} />
+                </div>
+                <label className="font-poppins flex items-center justify-center" htmlFor="farmacia">Farmacia
+                    <Checkbox onChange={(e) => setFiltros({ ...filtros, farmacia: e.target.checked })} type="checkbox" name="farmacia" id="farmacia" />
                 </label>
-                <label htmlFor=""> Jugueteria <input onChange={(e) => setFiltros({ ...filtros, jugueteria: e.target.checked })} type="checkbox" name="jugueteria" id="jugueteria" />
+                <label className="font-poppins flex items-center" htmlFor=""> Jugueteria
+                    <Checkbox onChange={(e) => setFiltros({ ...filtros, jugueteria: e.target.checked })} type="checkbox" name="jugueteria" id="jugueteria" />
                 </label>
-                <select className="w-52 h-10" name="filter" id="filter">
-                    <option onChange={(e) => setFiltros({ ...filtros, preciomayor: e.target.value })} id="preciomayor" value="preciomayor">Precio de mayor a menor</option>
-                    <option value="1">Precio de menor a mayor</option>
-                    <option value="2">Nombre de a--Z</option>
-                    <option value="3">Nombre de Z--a</option>
-                </select>
+                <Selects />
             </div>
             <div className="w-full flex flex-wrap relative -z-0 justify-center gap-x-10 gap-y-10 pb-10 pt-10">
                 {farmacia && farmacia?.map((product) =>
@@ -76,3 +76,7 @@ export default function Jugueteria() {
         </div>
     )
 }
+
+import { Input } from "@material-tailwind/react";
+import Select from "../components/Productos/Select";
+
