@@ -8,6 +8,8 @@ import NotFound from "../pages/NotFound"
 import Details from "../pages/Details"
 import General from "../layouts/General"
 import Footer from "../pages/Footer"
+import SingUp from "../pages/SingUp"
+import SingIn from "../pages/SignIn"
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +21,14 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <Inicio />
 
+            },
+            {
+                path: '/signin',
+                element: <SingIn />
+            },
+            {
+                path: '/signup',
+                element: <SingUp />
             },
             {
                 path: '/productos',

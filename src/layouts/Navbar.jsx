@@ -110,14 +110,16 @@ export function Navbar() {
                                 Sobre Nosotros
                             </ListItem>
                         </NavLink>
-                        {!user && (
-                            <ListItem onClick={() => setUser(true)}>
-                                <ListItemPrefix>
-                                    <PowerIcon className="h-5 w-5" />
-                                </ListItemPrefix>
-                                Log In
-                            </ListItem>
-                        )}
+                        <NavLink to={'/signin'}>
+                            {!user && (
+                                <ListItem onClick={() => setUser(true)}>
+                                    <ListItemPrefix>
+                                        <PowerIcon className="h-5 w-5" />
+                                    </ListItemPrefix>
+                                    Log In
+                                </ListItem>
+                            )}
+                        </NavLink>
                     </List>
                 </Drawer>
             </div>
