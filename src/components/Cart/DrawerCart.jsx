@@ -5,8 +5,9 @@ import {
     Typography,
     IconButton,
 } from "@material-tailwind/react";
-import { Cart } from "../assets/Icons";
+import { Cart } from "../../assets/Icons";
 import { XMarkIcon } from "@heroicons/react/24/outline"
+import ItemsCart from "./Cart";
 
 export function DrawerCart() {
     const [openRight, setOpenRight] = React.useState(false);
@@ -26,6 +27,7 @@ export function DrawerCart() {
                 <div className="mb-6 flex items-center justify-between">
                     <Typography variant="h5" color="blue-gray">
                         Tu Carrito
+
                     </Typography>
                     <IconButton
                         variant="text"
@@ -35,6 +37,10 @@ export function DrawerCart() {
                         <XMarkIcon strokeWidth={2} className="h-5 w-5" />
                     </IconButton>
                 </div>
+                <Typography variant="h5" color="blue-gray">
+
+                    <ItemsCart />
+                </Typography>
             </Drawer>
         </React.Fragment>
     );

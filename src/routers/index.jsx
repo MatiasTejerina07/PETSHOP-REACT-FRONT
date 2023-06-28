@@ -2,11 +2,12 @@ import { createBrowserRouter, Route } from "react-router-dom"
 
 //Páginas
 import Inicio from "../pages/Inicio"
-import Jugueteria from "../pages/Jugueteria"
+import Productos from "../pages/Productos"
 import SobreNosotros from "../pages/SobreNosotros"
 import NotFound from "../pages/NotFound"
 import Details from "../pages/Details"
 import General from "../layouts/General"
+import Footer from "../pages/Footer"
 
 export const router = createBrowserRouter([
     {
@@ -17,14 +18,25 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Inicio />
+
             },
             {
                 path: '/productos',
-                element: <Jugueteria />
+                element: (
+                    <>
+                        <Productos />
+                        <Footer />
+                    </>
+                )
             },
             {
                 path: '/sobrenosotros',
-                element: <SobreNosotros />
+                element: (
+                    <>
+                        <SobreNosotros />
+                        <Footer />
+                    </>
+                )
             },
             {
                 path: '/details/:id',

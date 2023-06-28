@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import utils from '../api/utils'
 import { Input as Entrada, Checkbox } from "@material-tailwind/react";
 import Selects from "../components/Productos/Select";
+import { useUserContext } from "../context/userContext";
 
 
 export default function Jugueteria() {
@@ -39,7 +40,6 @@ export default function Jugueteria() {
         setProduct(filteredProducts)
     }
 
-
     useEffect(
         () => {
             products()
@@ -51,6 +51,24 @@ export default function Jugueteria() {
             mostrarFiltros();
         }, [filtros]
     )
+    const { cart, setCart } = useUserContext()
+    const addItems = (e) => {
+        const { title, price, image, id } = JSON.parse(e.target.value)
+        setCart((prevCart) => {
+            const newItems = [...prevCart.items, {
+                producto: title,
+                id: id, // Agrega el ID del producto si es necesario
+                photo: image,
+                cantidad: "", // Agrega la cantidad del producto si es necesario
+                precio: price,
+            }];
+
+            return {
+                ...prevCart,
+                items: newItems,
+            };
+        })
+    }
 
     return (
         <div className="w-full h-full">
@@ -70,13 +88,9 @@ export default function Jugueteria() {
             <div className="w-full flex flex-wrap relative -z-0 justify-center gap-x-10 gap-y-10 pb-10 pt-10">
                 {farmacia && farmacia?.map((product) =>
                     <Cards key={product?._id} category={product?.categoria} title={product?.producto} image={product?.imagen}
-                        price={product?.precio} quantity={product?.disponibles} id={product?._id} />
+                        price={product?.precio} quantity={product?.disponibles} id={product?._id} addItem={addItems} />
                 )}
             </div>
         </div>
     )
 }
-
-import { Input } from "@material-tailwind/react";
-import Select from "../components/Productos/Select";
-

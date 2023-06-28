@@ -1,6 +1,6 @@
 import { Link as Anchor, NavLink, useNavigation, useNavigate } from "react-router-dom"
 import { Menu, Nosotros } from "../assets/Icons"
-import { useUserContext } from "../context/UserContext";
+import { useUserContext } from "../context/userContext";
 
 import React from "react";
 import {
@@ -30,8 +30,6 @@ export function Navbar() {
     const closeDrawer = () => setOpen(false)
 
     const navigate = useNavigation()
-    console.log(navigate);
-
     const { user, setUser } = useUserContext()
 
 
