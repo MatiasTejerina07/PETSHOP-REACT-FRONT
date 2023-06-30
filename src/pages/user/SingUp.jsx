@@ -1,9 +1,9 @@
-import Input from '../components/Inputs'
+import Input from '../../components/Inputs'
 import { Button, Typography } from '@material-tailwind/react'
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import actions from '../redux/userAction/userAction'
+import actions from '../../redux/userAction/userAction'
 import { useState, useEffect } from 'react'
 import { Alert } from "@material-tailwind/react";
 import { CheckCircleIcon, InformationCircleIcon, } from "@heroicons/react/24/solid";
@@ -52,7 +52,7 @@ export default function SingUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(sign_up(formData));
+        dispatch(sign_up({ formData }));
 
     }
 
@@ -72,7 +72,10 @@ export default function SingUp() {
                             />
                         }
                     >
-                        {error.exist}
+                        {error.photo} <br />
+                        {error.email} <br />
+                        {error.name}<br />
+                        {error.password}
                     </Alert> : ""}
                     {success ? <Alert
                         icon={<CheckCircleIcon className="mt-px h-6 w-6" />}
