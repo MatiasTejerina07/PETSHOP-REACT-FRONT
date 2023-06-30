@@ -1,6 +1,6 @@
 import { Link as Anchor, NavLink, useNavigation, useNavigate } from "react-router-dom"
 import { Menu, Nosotros } from "../assets/Icons"
-import { useUserContext } from "../context/userContext";
+
 
 import React from "react";
 import {
@@ -30,9 +30,9 @@ export function Navbar() {
     const closeDrawer = () => setOpen(false)
 
     const navigate = useNavigation()
-    const { user, setUser } = useUserContext()
 
 
+    const user = true
     return (
         <React.Fragment>
             <div className="fixed z-10 flex px-8 py-12 bg-transparent animate-slide-down ">
@@ -53,6 +53,14 @@ export function Navbar() {
                                     <HomeIcon className="h-5 w-5" />
                                 </ListItemPrefix>
                                 Inicio
+                            </ListItem>
+                        </NavLink>
+                        <NavLink to={'/sobrenosotros'}>
+                            <ListItem>
+                                <ListItemPrefix>
+                                    <Nosotros />
+                                </ListItemPrefix>
+                                Sobre Nosotros
                             </ListItem>
                         </NavLink>
                         {user && (
@@ -100,16 +108,6 @@ export function Navbar() {
                                 </ListItem>
                             </>
                         )}
-
-
-                        <NavLink to={'/sobrenosotros'}>
-                            <ListItem>
-                                <ListItemPrefix>
-                                    <Nosotros />
-                                </ListItemPrefix>
-                                Sobre Nosotros
-                            </ListItem>
-                        </NavLink>
                         <NavLink to={'/signin'}>
                             {!user && (
                                 <ListItem onClick={() => setUser(true)}>

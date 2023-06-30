@@ -4,13 +4,15 @@ import { router } from './routers'
 import './index.css'
 import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from "@material-tailwind/react";
-import UserProvider from './context/UserContext';
+import { store } from "./redux/store"
+import { Provider } from "react-redux"
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <UserProvider>
+  <Provider store={store}>
+    <React.StrictMode>
+      <ThemeProvider>
         <RouterProvider router={router} />
-      </UserProvider>
-    </ThemeProvider>
-  </React.StrictMode>,
+      </ThemeProvider>
+    </React.StrictMode>
+  </Provider>
 )
