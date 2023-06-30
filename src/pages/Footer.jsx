@@ -1,5 +1,6 @@
 import { Typography } from "@material-tailwind/react";
 import Sobremi from "../components/Sobremi/Collapse";
+import Yo from "../components/Sobremi/Yo";
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
@@ -23,7 +24,7 @@ export default function Footer() {
                                 Sobre Mi
                             </Typography>
                             <li className=" py-1.5 text-gray-700 cursor-pointer font-normal transition-colors hover:text-blue-gray-900">
-                                <Sobremi clase4={"hidden"} link1={"https://www.linkedin.com/in/matias-tejerina-268340264/"} description={"Amo programar, desarrollar proyectos grandes o chicos, en mis ratos libres los uso para aprender nuevas tecnologías o salgo a correr 🏃. Tengo curiosidad por todo el mundo IT, aspiro a continuar mis estudios para llegar hacer Analista en Sistemas."} name1={"Matias Tejerina"} link={"Desarrollador Full Stack"} clase2={"hidden"} clase3={"hidden"} image1={"https://avatars.githubusercontent.com/u/127890622?v=4"} />
+                                <Yo />
                             </li>
                             <li className=" py-1.5 text-gray-700 cursor-pointer font-normal transition-colors hover:text-blue-gray-900">
                                 <Sobremi link={"Estudios"} contenedor={"flex flex-col gap-4"} clase4={"hidden"} clase3={"hidden"} name2={"Actualmente sigo haciendo cursos en tecnologías como: Next, Typescript, React, entre otros. "} image2={"https://th.bing.com/th/id/OIP.QiRvTjL3Kz_hvQ2jo99FwQHaEU?pid=ImgDet&w=1920&h=1120&rs=1"} name1={"Bootcamp de +700hs de desarrollo web Fullstack utilizando MERN stack como tecnologías. MongoDB, Express, React.JS, Node.JS"} image1={"https://d92mrp7hetgfk.cloudfront.net/images/sites/misc/Mindhub/original.jpg?1604703006"} />

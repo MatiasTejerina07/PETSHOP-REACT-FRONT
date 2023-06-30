@@ -11,7 +11,7 @@ let initial_state = {
     loading: null,
     user: null,
     token: null,
-    verify: null,
+    cart: null,
     google: false
 }
 
@@ -27,7 +27,8 @@ const reducer = createReducer(
                     loading: false,
                     error: null,
                     success: true,
-                    token: action.payload.token
+                    token: action.payload.token,
+                    cart: action.payload.cart
                 }
                 return new_state
             }

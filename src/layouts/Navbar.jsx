@@ -98,18 +98,22 @@ export function Navbar() {
                                         />
                                     </ListItemSuffix>
                                 </ListItem>
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <UserCircleIcon className="h-5 w-5" />
-                                    </ListItemPrefix>
-                                    Profile
-                                </ListItem>
-                                <ListItem onClick={handleLogout}>
-                                    <ListItemPrefix>
-                                        <PowerIcon className="h-5 w-5" />
-                                    </ListItemPrefix>
-                                    Log Out
-                                </ListItem>
+                                <NavLink to={'/profile'}>
+                                    <ListItem>
+                                        <ListItemPrefix>
+                                            <UserCircleIcon className="h-5 w-5" />
+                                        </ListItemPrefix>
+                                        Profile
+                                    </ListItem>
+                                </NavLink>
+                                <NavLink to={'/'}>
+                                    <ListItem onClick={handleLogout} o>
+                                        <ListItemPrefix>
+                                            <PowerIcon className="h-5 w-5" />
+                                        </ListItemPrefix>
+                                        Log Out
+                                    </ListItem>
+                                </NavLink>
                             </>
                         )}
                         <NavLink to={'/signin'}>

@@ -7,11 +7,13 @@ const sign_in = createAsyncThunk("sign_in", async (data, { rejectWithValue }) =>
     try {
         let url = apiUrl + "auth/signin";
         let response = await axios.post(url, data);
+        console.log(response.data.cart);
         localStorage.setItem('token', JSON.stringify(response.data.token))
         return {
             success: response.data.success,
             user: response.data.user,
-            token: response.data.token
+            token: response.data.token,
+            cart: response.data.cart
         }
     } catch (error) {
         let { newError } = parseError({ error });
