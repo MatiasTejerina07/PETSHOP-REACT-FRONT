@@ -7,8 +7,10 @@ import actions from '../../redux/userAction/userAction'
 import { useState, useEffect } from 'react'
 import { Alert } from "@material-tailwind/react";
 import { CheckCircleIcon, InformationCircleIcon, } from "@heroicons/react/24/solid";
+import Google from './Google';
+import action from '../../redux/userAction/googleActions';
 
-
+const { sing_up_google } = action
 
 const { sign_up, clean_up } = actions
 export default function SingUp() {
@@ -125,6 +127,7 @@ export default function SingUp() {
                     <Button className="mt-2" fullWidth onClick={handleSubmit}>
                         Registrate
                     </Button>
+                    <Google action={sing_up_google} />
                     <Typography color="gray" className="text-center font-normal">
                         Los campos con <span className='text-red-600'>(*)</span> son requeridos
                     </Typography>

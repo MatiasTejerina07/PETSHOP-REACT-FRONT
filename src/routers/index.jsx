@@ -10,6 +10,7 @@ import General from "../layouts/General"
 import Footer from "../pages/Footer"
 import SingUp from "../pages/user/SingUp"
 import SingIn from "../pages/user/SignIn"
+import Profile from "../pages/user/Profile"
 
 export const router = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
                         <Footer />
                     </>
                 )
+            },
+            {
+                path: '/profile',
+                element: <Profile />
             },
             {
                 path: '/details/:id',
