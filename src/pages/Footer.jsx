@@ -1,20 +1,5 @@
 import { Typography } from "@material-tailwind/react";
-
-const LINKS = [
-    {
-        title: "Product",
-        items: ["Overview", "Features", "Solutions", "Tutorials"],
-    },
-    {
-        title: "Company",
-        items: ["About us", "Careers", "Press", "News"],
-    },
-    {
-        title: "Resource",
-        items: ["Blog", "Newsletter", "Events", "Help center"],
-    },
-];
-
+import Sobremi from "../components/Sobremi/Collapse";
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
@@ -22,40 +7,54 @@ export default function Footer() {
         <footer className="relative w-full">
             <div className="mx-auto w-full max-w-7xl px-8">
                 <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-                    <Typography variant="h5" className="mb-6">
+                    <Typography variant="h5" className="">
                         Mi PetShop en React JS
+                        <Typography variant="h9" className="w-96">
+                            Proyecto basado en React JS,Node.JS, Express, etc.
+                            El proyecto fue pensando para poder ser escalable, tener panel de Administrador, configuración de perfil, etc. <br />
+                            Basado en funciones e-commerce, el proyecto ofrece pagos desde la plataforma de Mercado Pago, creación de cuenta, carrito de compras, etc.
+                            Las funcionalidades aún estan en desarrollo.
+                        </Typography>
                     </Typography>
-                    <div className="grid grid-cols-3 justify-between gap-4">
-                        {LINKS.map(({ title, items }) => (
-                            <ul key={title}>
-                                <Typography
-                                    variant="small"
-                                    color="blue-gray"
-                                    className="mb-3 font-medium opacity-40"
-                                >
-                                    {title}
+
+                    <div className="grid grid-cols-3 justify-end gap-4">
+                        <ul>
+                            <Typography variant="small" color="blue-gray" className="mb-3 font-medium opacity-40">
+                                Sobre Mi
+                            </Typography>
+                            <li className=" py-1.5 text-gray-700 cursor-pointer font-normal transition-colors hover:text-blue-gray-900">
+                                <Sobremi clase4={"hidden"} link1={"https://www.linkedin.com/in/matias-tejerina-268340264/"} description={"Amo programar, desarrollar proyectos grandes o chicos, en mis ratos libres los uso para aprender nuevas tecnologías o salgo a correr 🏃. Tengo curiosidad por todo el mundo IT, aspiro a continuar mis estudios para llegar hacer Analista en Sistemas."} name1={"Matias Tejerina"} link={"Desarrollador Full Stack"} clase2={"hidden"} clase3={"hidden"} image1={"https://avatars.githubusercontent.com/u/127890622?v=4"} />
+                            </li>
+                            <li className=" py-1.5 text-gray-700 cursor-pointer font-normal transition-colors hover:text-blue-gray-900">
+                                <Sobremi link={"Estudios"} contenedor={"flex flex-col gap-4"} clase4={"hidden"} clase3={"hidden"} name2={"Actualmente sigo haciendo cursos en tecnologías como: Next, Typescript, React, entre otros. "} image2={"https://th.bing.com/th/id/OIP.QiRvTjL3Kz_hvQ2jo99FwQHaEU?pid=ImgDet&w=1920&h=1120&rs=1"} name1={"Bootcamp de +700hs de desarrollo web Fullstack utilizando MERN stack como tecnologías. MongoDB, Express, React.JS, Node.JS"} image1={"https://d92mrp7hetgfk.cloudfront.net/images/sites/misc/Mindhub/original.jpg?1604703006"} />
+                            </li>
+                            <li className="py-1.5 text-gray-700 cursor-pointer font-normal transition-colors hover:text-blue-gray-900" >
+                                <Sobremi name1={"Nicolas Cirulli"} contenedor={"flex flex-col gap-4"} clase4={"hidden"} name2={"José Zaccaro"} name3={"Facundo Cartolano"} link={"Mentores"} description={"A ellos gracias por el esfuerzo y la dedicación."} link1={"https://www.linkedin.com/in/nicolascirulli/"} link2={"https://www.linkedin.com/in/jose-zaccaro/"} link3={"https://www.linkedin.com/in/cartolanofacundo/"} image1={"https://media.licdn.com/dms/image/D4D03AQGZw7H-jE-xbg/profile-displayphoto-shrink_800_800/0/1679970360555?e=1693440000&v=beta&t=-ZyW7U0kv86Ex_Uqc6EBjaSGlfx3IHQCcxiQDtE7GGI"} image2={"https://media.licdn.com/dms/image/D4D03AQFcFE6rMUAUyQ/profile-displayphoto-shrink_800_800/0/1687898455695?e=1693440000&v=beta&t=3i7Cf4fHq8751pLyudXq-2ijjetkO-Q3mjgc-oDWkqk"} image3={"https://media.licdn.com/dms/image/D4D35AQH8BBC00kjMaw/profile-framedphoto-shrink_800_800/0/1687873180049?e=1688590800&v=beta&t=SWpkkcLSuDysVlGM7BYpasf9Ha-0M4wZO18QoOZcVmw"} clases={"w-16 h-16"} clase1={"flex items-center gap-8"} clase2={"flex items-center gap-8"} clase3={"flex items-center gap-8"} />
+                            </li>
+                            <li className="py-1.5 text-gray-700 cursor-pointer font-normal transition-colors hover:text-blue-gray-900" >
+                                <Sobremi link={"Tecnologías"} contenedor={"flex"} image1={"https://th.bing.com/th/id/R.4a8b4c88841c8e93377815431246d2fb?rik=tJlFPibyHfMffA&pid=ImgRaw&r=0"} image2={"https://th.bing.com/th/id/OIP.tO-vmNhuECi9tXnlqyuaewHaFj?pid=ImgDet&rs=1"} image3={"https://th.bing.com/th/id/OIP.8HeK50CR8kkgEUFphV-LlQHaFj?pid=ImgDet&rs=1"} clases={"w-16 h-16"} clase1={"flex items-center gap-8"} clase2={"flex items-center gap-8"} clase3={"flex items-center gap-8"} image4={"https://th.bing.com/th/id/OIP.htbUdWgFQ3a94PMEvBr_hQHaEO?pid=ImgDet&rs=1"} />
+                            </li>
+                        </ul>
+                        <ul>
+                            <Typography variant="small" color="blue-gray" className="mb-3 font-medium opacity-40">
+                                Recursos
+                            </Typography>
+                            <li>
+                                <Typography as="a" href="#" color="gray" className="py-1.5 font-normal transition-colors hover:text-blue-gray-900">
+                                    Librerias
                                 </Typography>
-                                {items.map((link) => (
-                                    <li key={link}>
-                                        <Typography
-                                            as="a"
-                                            href="#"
-                                            color="gray"
-                                            className="py-1.5 font-normal transition-colors hover:text-blue-gray-900"
-                                        >
-                                            {link}
-                                        </Typography>
-                                    </li>
-                                ))}
-                            </ul>
-                        ))}
+                                <Typography as="a" href="#" color="gray" className="py-1.5 font-normal transition-colors hover:text-blue-gray-900">
+                                    Componentes
+                                </Typography>
+                                <Typography as="a" href="#" color="gray" className="py-1.5 font-normal transition-colors hover:text-blue-gray-900">
+                                    Información
+                                </Typography>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div className="mt-12 flex w-full flex-col items-center justify-center border-t border-blue-gray-50 py-4 md:flex-row md:justify-between">
-                    <Typography
-                        variant="small"
-                        className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
-                    >
+                    <Typography variant="small" className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0">
                         &copy; {currentYear} <a href="#">Matias Tejerina</a>. All
                         Rights Reserved.
                     </Typography>

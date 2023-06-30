@@ -6,17 +6,9 @@ import {
     Typography,
     Button,
 } from "@material-tailwind/react";
-import { data } from "autoprefixer";
 import { Link as Anchor } from "react-router-dom";
 
-export default function Cards({ category, title, price, image, quantity, id, description, addItem }) {
-    let datos = {
-        title,
-        price,
-        image,
-        id,
-
-    }
+export default function Cards({ title, price, image, quantity, id, addItem }) {
     return (
         <Card className="w-60">
             <CardHeader shadow={false} floated={false} className="h-36 flex justify-center">
@@ -53,7 +45,7 @@ export default function Cards({ category, title, price, image, quantity, id, des
                 </Anchor>
             </div>
             <CardFooter className="pt-0">
-                {quantity > 0 && (<Button onClick={addItem} value={JSON.stringify(datos)}
+                {quantity > 0 && (<Button onClick={addItem}
                     ripple={false}
                     fullWidth={true}
                     className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:shadow-none hover:scale-105 focus:shadow-none focus:scale-105 active:scale-100"

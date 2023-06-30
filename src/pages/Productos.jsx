@@ -1,74 +1,51 @@
 import Categorias from "../components/Categorias"
 import Cards from "../components/Productos/Card"
 import { useEffect, useState } from "react"
-import utils from '../api/utils'
 import { Input as Entrada, Checkbox } from "@material-tailwind/react";
 import Selects from "../components/Productos/Select";
-import { useUserContext } from "../context/userContext";
+import { apiUrl } from "../utils/api"
+import axios from "axios";
 
 
 export default function Jugueteria() {
-    const [farmacia, setProduct] = useState([])
+    const [products, setProduct] = useState([])
     const [filtros, setFiltros] = useState({
         farmacia: false,
         jugueteria: false,
         buscador: ''
     })
     const [initialProducts, setInitialProducts] = useState([])
-    const products = () => utils.apiUrl().then(res => {
-        setProduct(res.data)
-        setInitialProducts(res.data)
-    })
-
+    useEffect(
+        () => {
+            axios(apiUrl + "products")
+                .then(res => {
+                    setProduct(res.data.products)
+                    setInitialProducts(res.data.products)
+                })
+                .catch(err => console.log(err))
+        }, []
+    )
     const mostrarFiltros = () => {
         let filteredProducts = initialProducts
-
         if (filtros.jugueteria) {
             filteredProducts = filteredProducts.filter(product => product.categoria === "jugueteria")
         }
-
         if (filtros.farmacia) {
             filteredProducts = filteredProducts.filter(product => product.categoria === "farmacia")
         }
-
         if (filtros.buscador !== '') {
             filteredProducts = filteredProducts.filter(product =>
                 product.producto.toLowerCase().includes(filtros.buscador.toLowerCase())
             )
         }
-
         setProduct(filteredProducts)
     }
-
-    useEffect(
-        () => {
-            products()
-        }, []
-    )
 
     useEffect(
         () => {
             mostrarFiltros();
         }, [filtros]
     )
-    const { cart, setCart } = useUserContext()
-    const addItems = (e) => {
-        const { title, price, image, id } = JSON.parse(e.target.value)
-        setCart((prevCart) => {
-            const newItems = [...prevCart.items, {
-                producto: title,
-                id: id, // Agrega el ID del producto si es necesario
-                photo: image,
-                cantidad: "", // Agrega la cantidad del producto si es necesario
-                precio: price,
-            }];
-
-            return {
-                ...prevCart,
-                items: newItems,
-            };
-        })
-    }
 
     return (
         <div className="w-full h-full">
@@ -86,9 +63,9 @@ export default function Jugueteria() {
                 <Selects />
             </div>
             <div className="w-full flex flex-wrap relative -z-0 justify-center gap-x-10 gap-y-10 pb-10 pt-10">
-                {farmacia && farmacia?.map((product) =>
+                {products && products?.map((product) =>
                     <Cards key={product?._id} category={product?.categoria} title={product?.producto} image={product?.imagen}
-                        price={product?.precio} quantity={product?.disponibles} id={product?._id} addItem={addItems} />
+                        price={product?.precio} quantity={product?.disponibles} id={product?._id} />
                 )}
             </div>
         </div>
