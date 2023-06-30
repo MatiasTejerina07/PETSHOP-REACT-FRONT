@@ -1,7 +1,5 @@
 import { Link as Anchor, NavLink, useNavigation, useNavigate } from "react-router-dom"
 import { Menu, Nosotros } from "../assets/Icons"
-
-
 import React from "react";
 import {
     Drawer,
@@ -23,16 +21,20 @@ import {
     PowerIcon,
     HomeIcon
 } from "@heroicons/react/24/solid";
+import { useSelector, useDispatch } from "react-redux";
+import actions from "../redux/userAction/userAction";
 
+const { sign_out } = actions
 export function Navbar() {
     const [open, setOpen] = React.useState(false)
     const openDrawer = () => setOpen(true)
     const closeDrawer = () => setOpen(false)
+    let { token, user } = useSelector(store => store.user)
+    let dispatch = useDispatch()
+    function handleLogout() {
+        dispatch(sign_out())
+    }
 
-    const navigate = useNavigation()
-
-
-    const user = true
     return (
         <React.Fragment>
             <div className="fixed z-10 flex px-8 py-12 bg-transparent animate-slide-down ">
@@ -63,14 +65,16 @@ export function Navbar() {
                                 Sobre Nosotros
                             </ListItem>
                         </NavLink>
-                        {user && (
+                        {user?.role === 3 && (
+                            <ListItem>
+                                <ListItemPrefix>
+                                    <PresentationChartBarIcon className="h-5 w-5" />
+                                </ListItemPrefix>
+                                Dashboard (Admin)
+                            </ListItem>
+                        )}
+                        {token && (
                             <>
-                                <ListItem>
-                                    <ListItemPrefix>
-                                        <PresentationChartBarIcon className="h-5 w-5" />
-                                    </ListItemPrefix>
-                                    Dashboard (Admin)
-                                </ListItem>
                                 <NavLink to={'/productos'}>
                                     <ListItem>
                                         <ListItemPrefix>
@@ -100,7 +104,7 @@ export function Navbar() {
                                     </ListItemPrefix>
                                     Profile
                                 </ListItem>
-                                <ListItem onClick={() => setUser(false)}>
+                                <ListItem onClick={handleLogout}>
                                     <ListItemPrefix>
                                         <PowerIcon className="h-5 w-5" />
                                     </ListItemPrefix>
@@ -109,8 +113,8 @@ export function Navbar() {
                             </>
                         )}
                         <NavLink to={'/signin'}>
-                            {!user && (
-                                <ListItem onClick={() => setUser(true)}>
+                            {!token && (
+                                <ListItem>
                                     <ListItemPrefix>
                                         <PowerIcon className="h-5 w-5" />
                                     </ListItemPrefix>
