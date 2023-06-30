@@ -8,8 +8,8 @@ import NotFound from "../pages/NotFound"
 import Details from "../pages/Details"
 import General from "../layouts/General"
 import Footer from "../pages/Footer"
-import SingUp from "../pages/SingUp"
-import SingIn from "../pages/SignIn"
+import SingUp from "../pages/user/SingUp"
+import SingIn from "../pages/user/SignIn"
 
 export const router = createBrowserRouter([
     {
