@@ -36,9 +36,16 @@ const CartProvider = ({ children }) => {
         }
     };
 
+    const removeAllProductToCart = (product) => {
+        const existingProductIndex = cart.findIndex((item) => item.producto !== product);
+
+        if (existingProductIndex !== -1) {
+            setCart((prevCart) => prevCart.filter((item, index) => index !== existingProductIndex));
+        }
+    };
 
     return (
-        <CartContext.Provider value={{ cart, addProductToCart, removeProductToCart }}>
+        <CartContext.Provider value={{ cart, addProductToCart, removeProductToCart, removeAllProductToCart }}>
             {children}
         </CartContext.Provider>
     );
