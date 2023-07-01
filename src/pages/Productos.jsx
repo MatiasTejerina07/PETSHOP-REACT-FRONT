@@ -57,7 +57,6 @@ export default function Jugueteria() {
 
 
 
-
     return (
         <div className="w-full h-full">
             <Categorias />
@@ -78,7 +77,9 @@ export default function Jugueteria() {
                     <Cards key={product?._id} category={product?.categoria} title={product?.producto} image={product?.imagen}
                         price={product?.precio} quantity={product?.disponibles} id={product?._id} addItem={handleAddToCart} />
                 )}
+
             </div>
+
         </div>
     )
 }

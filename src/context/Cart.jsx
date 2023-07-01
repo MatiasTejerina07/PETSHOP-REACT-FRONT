@@ -36,16 +36,20 @@ const CartProvider = ({ children }) => {
         }
     };
 
-    const removeAllProductToCart = (product) => {
+    const deleteProductToCart = (product) => {
         const existingProductIndex = cart.findIndex((item) => item.producto !== product);
 
         if (existingProductIndex !== -1) {
             setCart((prevCart) => prevCart.filter((item, index) => index !== existingProductIndex));
         }
     };
+    const totalPrice = cart.reduce((total, item) => total + (item.producto.precio * item.cantidad), 0)
 
+    const checkout = () => {
+        setCart([])
+    }
     return (
-        <CartContext.Provider value={{ cart, addProductToCart, removeProductToCart, removeAllProductToCart }}>
+        <CartContext.Provider value={{ cart, addProductToCart, removeProductToCart, deleteProductToCart, totalPrice, checkout }}>
             {children}
         </CartContext.Provider>
     );

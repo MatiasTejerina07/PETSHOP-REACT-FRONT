@@ -44,6 +44,7 @@ export function DrawerCart() {
                 <div className=" flex justify-center items-start max-h-full  overflow-x-hidden">
                     <ItemsCart />
                 </div>
+
             </Drawer>
         </React.Fragment>
     );
