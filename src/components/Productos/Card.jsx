@@ -7,8 +7,11 @@ import {
     Button,
 } from "@material-tailwind/react";
 import { Link as Anchor } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Cards({ title, price, image, quantity, id, addItem }) {
+
+
     return (
         <Card className="w-60">
             <CardHeader shadow={false} floated={false} className="h-36 flex justify-center">
@@ -19,7 +22,7 @@ export default function Cards({ title, price, image, quantity, id, addItem }) {
             </CardHeader>
             <CardBody>
                 <div className="flex flex-col items-center justify-between mb-2 gap-4">
-                    <Typography color="blue-gray" className="font-medium text-center font-poppins">
+                    <Typography color="blue-gray" className="font-medium h-10 text-center font-poppins">
                         {title}
                     </Typography>
                     <div className="flex  gap-1">
@@ -45,7 +48,7 @@ export default function Cards({ title, price, image, quantity, id, addItem }) {
                 </Anchor>
             </div>
             <CardFooter className="pt-0">
-                {quantity > 0 && (<Button onClick={addItem}
+                {quantity > 0 && (<Button value={id} onClick={addItem}
                     ripple={false}
                     fullWidth={true}
                     className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:shadow-none hover:scale-105 focus:shadow-none focus:scale-105 active:scale-100"

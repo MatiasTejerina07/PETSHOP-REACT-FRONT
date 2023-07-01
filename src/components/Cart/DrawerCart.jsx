@@ -10,6 +10,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline"
 import ItemsCart from "./Cart";
 
 export function DrawerCart() {
+
     const [openRight, setOpenRight] = React.useState(false);
     const openDrawerRight = () => setOpenRight(true)
     const closeDrawerRight = () => setOpenRight(false);
@@ -39,8 +40,10 @@ export function DrawerCart() {
                 </div>
                 <Typography variant="h5" color="blue-gray">
 
+                </Typography >
+                <div className=" flex justify-center items-start max-h-full  overflow-x-hidden">
                     <ItemsCart />
-                </Typography>
+                </div>
             </Drawer>
         </React.Fragment>
     );

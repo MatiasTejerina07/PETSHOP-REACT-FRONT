@@ -6,13 +6,19 @@ import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from "@material-tailwind/react";
 import { store } from "./redux/store"
 import { Provider } from "react-redux"
+import { CartProvider } from './context/Cart';
+import { ProductProvider } from './context/Product'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <React.StrictMode>
-      <ThemeProvider>
-        <RouterProvider router={router} />
-      </ThemeProvider>
+      <ProductProvider>
+        <CartProvider>
+          <ThemeProvider>
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </CartProvider>
+      </ProductProvider>
     </React.StrictMode>
   </Provider>
 )
