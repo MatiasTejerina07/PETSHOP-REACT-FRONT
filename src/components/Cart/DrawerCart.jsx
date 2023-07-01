@@ -16,7 +16,7 @@ export function DrawerCart() {
     const closeDrawerRight = () => setOpenRight(false);
     return (
         <React.Fragment>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap fixed z-10 gap-4">
                 <Button className="rounded-full mr-4 p-4" onClick={openDrawerRight}><Cart /></Button>
             </div>
             <Drawer

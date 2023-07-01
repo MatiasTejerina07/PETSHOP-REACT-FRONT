@@ -7,11 +7,21 @@ import {
     Button,
 } from "@material-tailwind/react";
 import { Link as Anchor } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { Alert } from "@material-tailwind/react";
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
+
 
 export default function Cards({ title, price, image, quantity, id, addItem }) {
 
-
+    const [showmessage, showMessage] = useState(false)
+    const show = () => {
+        showMessage(true)
+        setTimeout(() => {
+            showMessage(false)
+        }, 2500
+        )
+    }
     return (
         <Card className="w-60">
             <CardHeader shadow={false} floated={false} className="h-36 flex justify-center">
@@ -48,13 +58,25 @@ export default function Cards({ title, price, image, quantity, id, addItem }) {
                 </Anchor>
             </div>
             <CardFooter className="pt-0">
-                {quantity > 0 && (<Button value={id} onClick={addItem}
-                    ripple={false}
-                    fullWidth={true}
-                    className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:shadow-none hover:scale-105 focus:shadow-none focus:scale-105 active:scale-100"
-                >
-                    Agregar al Carro
-                </Button>)}
+                <button onClick={show}>
+                    {quantity > 0 && (<Button onCl value={id} onClick={addItem}
+                        ripple={false}
+                        fullWidth={true}
+                        className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:shadow-none hover:scale-105 focus:shadow-none focus:scale-105 active:scale-100"
+                    >
+                        Agregar al Carro
+                    </Button>)}
+                    <div className="h-5 w-full absolute right-[0px] top-[290px]">
+                        {showmessage && (
+                            <Alert
+                                icon={<CheckCircleIcon className="mt-px h-6 w-6" />}
+                                className="bg-white border text-[#2ec946] border-l-4 border-[#2ec946] rounded-none font-medium"
+                            >
+                                Exito al añadir
+                            </Alert>
+                        )}
+                    </div>
+                </button>
             </CardFooter>
         </Card>
     );
