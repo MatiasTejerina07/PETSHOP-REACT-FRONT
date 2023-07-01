@@ -3,8 +3,9 @@ import { useContext } from 'react'
 import { CartContext } from '../../context/Cart'
 import { Button } from '@material-tailwind/react';
 import { useProductContext } from '../../context/Product'
+
 export default function ItemsCart() {
-    const { cart, addProductToCart, removeProductToCart } = useContext(CartContext)
+    const { cart, addProductToCart, removeProductToCart, removeAllProductToCart } = useContext(CartContext)
     const { product, setProduct, initialProducts } = useProductContext()
     const addProduct = (e) => {
         let productId = e.target.value;
@@ -23,6 +24,10 @@ export default function ItemsCart() {
         }
         const productToAdd = { producto: product, cantidad: 1 };
         removeProductToCart(productToAdd.producto, productToAdd.cantidad);
+    }
+    const removeisProduct = (e) => {
+        let productId = e.target.value;
+        removeAllProductToCart(productId)
     }
 
     return (
@@ -47,6 +52,7 @@ export default function ItemsCart() {
                             {items?.producto?.disponibles > 0 ?
                                 <Button value={items.producto._id} onClick={addProduct} className='px-4 py-2'>+</Button> : ""}
                             {items?.cantidad > 0 ? <Button value={items.producto._id} color='red' onClick={removeProduct} className='px-4 py-2'>-</Button> : ""}
+                            {items?.cantidad === 0 && (<Button value={items.producto._id} color='indigo' onClick={removeisProduct} className='px-4 py-2'>Deleted</Button>)}
                         </div>
                     </div>
                 )}
